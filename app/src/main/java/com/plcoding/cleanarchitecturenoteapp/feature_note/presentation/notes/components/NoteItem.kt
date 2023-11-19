@@ -41,6 +41,7 @@ fun NoteItem(
                 lineTo(size.width - cutCornerSize.toPx(), 0f)
                 lineTo(size.width, cutCornerSize.toPx())
                 lineTo(size.width, size.height)
+                lineTo(0f, size.height)
                 close()
             }
 
@@ -68,17 +69,17 @@ fun NoteItem(
         ) {
             Text(
                 text = note.title,
-            style = MaterialTheme.typography.h6,
-            color = MaterialTheme.colors.onSurface,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
+                style = MaterialTheme.typography.h6,
+                color = MaterialTheme.colors.onSurface,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = note.content,
                 style = MaterialTheme.typography.body1,
                 color = MaterialTheme.colors.onSurface,
-                maxLines = 1,
+                maxLines = 10,
                 overflow = TextOverflow.Ellipsis
             )
         }
@@ -88,7 +89,8 @@ fun NoteItem(
         ) {
             Icon(
                 imageVector = Icons.Default.Delete,
-                contentDescription = "Delete note"
+                contentDescription = "Delete note",
+                tint = MaterialTheme.colors.onSurface
             )
         }
     }

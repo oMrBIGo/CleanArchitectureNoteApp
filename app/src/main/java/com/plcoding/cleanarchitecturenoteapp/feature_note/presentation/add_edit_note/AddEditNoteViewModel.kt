@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 @HiltViewModel
 class AddEditNoteViewModel @Inject constructor(
     private val noteUseCase: NoteUseCase,
@@ -38,7 +37,6 @@ class AddEditNoteViewModel @Inject constructor(
     val eventFlow = _eventFlow.asSharedFlow()
 
     private var currentNoteId: Int? = null
-
     init {
         savedStateHandle.get<Int>("noteId")?.let { noteId ->
             if (noteId != -1) {
@@ -59,7 +57,6 @@ class AddEditNoteViewModel @Inject constructor(
             }
         }
     }
-
     fun onEvent(event: AddEditNoteEvent) {
         when(event) {
             is AddEditNoteEvent.EnteredTitle -> {
@@ -111,7 +108,6 @@ class AddEditNoteViewModel @Inject constructor(
             }
         }
     }
-
     sealed class UiEvent {
         data class ShowSnackBar(val message: String): UiEvent()
         object SaveNote: UiEvent()
